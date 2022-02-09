@@ -2,6 +2,7 @@ package com.galvanize.tmo.paspringstarter.api;
 
 import com.galvanize.tmo.paspringstarter.model.Book;
 import com.galvanize.tmo.paspringstarter.Service.BookService;
+import com.galvanize.tmo.paspringstarter.model.Books;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +22,13 @@ public class LibraryController {
     }
 
     @PostMapping
-    public ResponseEntity<Integer> addBook(@RequestBody Book book){
+    public ResponseEntity<Object> addBook(@RequestBody Book book){
         return ResponseEntity.status(HttpStatus.CREATED).body(bookService.addBook(book));
     }
 
     @GetMapping
-    public List<Book> getAllBooks(){
-        return bookService.getAllBooks();
+    public Books getAllBooks(){
+        return new Books(bookService.getAllBooks());
     }
 
     @GetMapping(path = "{id}")

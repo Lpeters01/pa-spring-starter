@@ -9,7 +9,6 @@ public interface BookDao {
 
     int insertBook(Book book);
 
-
     List<Book> viewAllBooks();
 
     Optional<Book> selectBookById(Long id);
