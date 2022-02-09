@@ -2,18 +2,20 @@ package com.galvanize.tmo.paspringstarter.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 
 public class Book {
 
-    private static int count = 0;
-    private final Integer id;
+
+    private Long id;
     private final String author;
     private final String title;
     private final Integer yearPublished;
 
 
 
-    public Book(@JsonProperty("id") Integer id,
+    public Book(@JsonProperty("id") Long id,
                 @JsonProperty("author") String author,
                 @JsonProperty("title") String title,
                 @JsonProperty("yearPublished") Integer yearPublished) {
@@ -24,10 +26,13 @@ public class Book {
     }
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
+    public void setId(Long id){
+        this.id = id;
+    }
 
     public String getAuthor() {
         return author;

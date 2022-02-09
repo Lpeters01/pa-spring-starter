@@ -31,7 +31,7 @@ public class LibraryController {
     }
 
     @GetMapping(path = "{id}")
-    public Book getBookById(@PathVariable("id") Integer id){
+    public Book getBookById(@PathVariable("id") Long id){
         return bookService.getBookById(id)
                 .orElse(null);
     }

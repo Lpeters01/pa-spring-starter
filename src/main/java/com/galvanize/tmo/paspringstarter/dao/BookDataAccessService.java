@@ -15,11 +15,11 @@ public class BookDataAccessService implements BookDao {
     private static List<Book> DB = new ArrayList<>();
 
     @Override
-    public int insertBook(Integer id, Book book) {
+    public int insertBook( Book book) {
         if (book.getId() == null){
-            id = 1;
+            book.setId((long) DB.size() +1);
         }
-        DB.add(new Book(id, book.getAuthor(), book.getTitle(), book.getYearPublished()));
+        DB.add(new Book(book.getId(), book.getAuthor(), book.getTitle(), book.getYearPublished()));
         return 1;
     }
 
@@ -32,7 +32,7 @@ public class BookDataAccessService implements BookDao {
     }
 
     @Override
-    public Optional<Book> selectBookById(Integer id) {
+    public Optional<Book> selectBookById(Long id) {
         return DB.stream()
                 .filter(book -> book.getId().equals(id))
                 .findFirst();

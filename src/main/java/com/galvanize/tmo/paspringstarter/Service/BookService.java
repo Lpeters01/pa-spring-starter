@@ -28,7 +28,7 @@ public class BookService {
         return bookDao.viewAllBooks();
     }
 
-    public Optional<Book> getBookById(Integer id){
+    public Optional<Book> getBookById(Long id){
         return bookDao.selectBookById(id);
     }
 
