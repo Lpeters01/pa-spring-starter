@@ -20,7 +20,7 @@ public class BookDataAccessService implements BookDao {
             books.setId((long) DB.size() +1);
         }
         DB.add(new Books(books.getId(), books.getAuthor(), books.getTitle(), books.getYearPublished()));
-        return DB.size();
+        return books.getId().intValue();
     }
 
 
