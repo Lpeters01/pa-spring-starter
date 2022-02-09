@@ -3,6 +3,8 @@ package com.galvanize.tmo.paspringstarter.api;
 import com.galvanize.tmo.paspringstarter.model.Book;
 import com.galvanize.tmo.paspringstarter.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +21,8 @@ public class LibraryController {
     }
 
     @PostMapping
-    public void  addBook(@RequestBody Book book){
-        bookService.addBook(book);
+    public ResponseEntity<Integer> addBook(@RequestBody Book book){
+        return ResponseEntity.status(HttpStatus.CREATED).body(bookService.addBook(book));
     }
 
     @GetMapping
@@ -35,8 +37,8 @@ public class LibraryController {
     }
 
     @DeleteMapping
-    public int nothingsHere(){
-        return bookService.clearLib();
+    public ResponseEntity<Integer> nothingsHere(){
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(bookService.clearLib());
     }
 
 }
