@@ -1,14 +1,12 @@
 package com.galvanize.tmo.paspringstarter.api;
 
-import com.galvanize.tmo.paspringstarter.model.Book;
-import com.galvanize.tmo.paspringstarter.Service.BookService;
 import com.galvanize.tmo.paspringstarter.model.Books;
+import com.galvanize.tmo.paspringstarter.Service.BookService;
+import com.galvanize.tmo.paspringstarter.model.BooksList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequestMapping("api/books")
 @RestController
@@ -22,17 +20,17 @@ public class LibraryController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> addBook(@RequestBody Book book){
-        return ResponseEntity.status(HttpStatus.CREATED).body(bookService.addBook(book));
+    public ResponseEntity<Object> addBook(@RequestBody Books books){
+        return ResponseEntity.status(HttpStatus.CREATED).body(bookService.addBook(books));
     }
 
     @GetMapping
-    public Books getAllBooks(){
-        return new Books(bookService.getAllBooks());
+    public BooksList getAllBooks(){
+        return new BooksList(bookService.getAllBooks());
     }
 
     @GetMapping(path = "{id}")
-    public Book getBookById(@PathVariable("id") Long id){
+    public Books getBookById(@PathVariable("id") Long id){
         return bookService.getBookById(id)
                 .orElse(null);
     }

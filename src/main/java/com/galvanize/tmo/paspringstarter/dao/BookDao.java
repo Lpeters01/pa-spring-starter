@@ -1,17 +1,17 @@
 package com.galvanize.tmo.paspringstarter.dao;
 
-import com.galvanize.tmo.paspringstarter.model.Book;
+import com.galvanize.tmo.paspringstarter.model.Books;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface BookDao {
 
-    int insertBook(Book book);
+    int insertBook(Books books);
 
-    List<Book> viewAllBooks();
+    List<Books> viewAllBooks();
 
-    Optional<Book> selectBookById(Long id);
+    Optional<Books> selectBookById(Long id);
 
     int deleteAllBooks();
 

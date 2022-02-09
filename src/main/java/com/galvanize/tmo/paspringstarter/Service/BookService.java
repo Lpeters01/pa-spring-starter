@@ -1,8 +1,8 @@
 package com.galvanize.tmo.paspringstarter.Service;
 
-import com.galvanize.tmo.paspringstarter.model.Book;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.galvanize.tmo.paspringstarter.model.Books;
 import com.galvanize.tmo.paspringstarter.dao.BookDao;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -13,6 +13,7 @@ import java.util.Optional;
 @Service
 public class BookService {
 
+    @JsonProperty("books")
     private final BookDao bookDao;
 
     @Autowired
@@ -20,15 +21,15 @@ public class BookService {
         this.bookDao = bookDao;
     }
 
-    public int addBook(Book book){
-        return bookDao.insertBook(book);
+    public int addBook(Books books){
+        return bookDao.insertBook(books);
     }
-
-    public List<Book> getAllBooks(){
+    @JsonProperty("books")
+    public List<Books> getAllBooks(){
         return bookDao.viewAllBooks();
     }
 
-    public Optional<Book> getBookById(Long id){
+    public Optional<Books> getBookById(Long id){
         return bookDao.selectBookById(id);
     }
 
