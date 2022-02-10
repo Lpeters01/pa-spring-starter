@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface BookDao {
 
-    int insertBook(Books books);
+    Books insertBook(Books books);
 
     List<Books> viewAllBooks();
 

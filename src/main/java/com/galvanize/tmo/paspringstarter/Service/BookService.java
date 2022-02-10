@@ -21,7 +21,7 @@ public class BookService {
         this.bookDao = bookDao;
     }
 
-    public int addBook(Books books){
+    public Books addBook(Books books){
         return bookDao.insertBook(books);
     }
     @JsonProperty("books")
